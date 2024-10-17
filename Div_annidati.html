@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+    <style>
+        .scatola1{
+            margin:10px;
+            width: 300px;
+            height: 550px;
+            border: 2px solid black;
+            .scatola1_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola1_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola1_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola2{
+            margin:10px;
+            width: 300px;
+            height: 530px;
+            border: 2px solid black;
+            .scatola2_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola2_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola2_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola3{
+            margin:10px;
+            width: 300px;
+            height: 590px;
+            border: 2px solid black;
+            .scatola3_soldi{
+                background-color: green;
+                width: 300px;
+                height: 60px;
+            }
+            .scatola3_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola3_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola4{
+            margin:10px;
+            width: 300px;
+            height: 550px;
+            border: 2px solid black;
+            .scatola4_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola4_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola4_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola5{
+            margin:10px;
+            width: 300px;
+            height: 530px;
+            border: 2px solid black;
+            .scatola5_soldi{
+                background-color: green;
+                width: 300px;
+                height: 60px;
+            }
+            .scatola5_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola5_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola6{
+            margin:10px;
+            width: 300px;
+            height: 600px;
+            border: 2px solid black;
+            .scatola6_soldi{
+                background-color: green;
+                width: 300px;
+                height: 90px;
+            }
+            .scatola6_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola6_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola7{
+            margin:10px;
+            width: 300px;
+            height: 550px;
+            border: 2px solid black;
+            .scatola7_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola7_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola7_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola8{
+            margin:10px;
+            width: 300px;
+            height: 490px;
+            border: 2px solid black;
+            .scatola8_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola8_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola8_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola9{
+            margin:10px;
+            width: 300px;
+            height: 510px;
+            border: 2px solid black;
+            .scatola9_soldi{
+                background-color: green;
+                width: 300px;
+                height: 30px;
+            }
+            .scatola9_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola9_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+        .scatola10{
+            margin:10px;
+            width: 300px;
+            height: 640px;
+            border: 2px solid black;
+            .scatola10_soldi{
+                background-color: green;
+                width: 300px;
+                height: 60px;
+            }
+            .scatola10_descrizione{
+                background-color: transparent;
+                width: 300px;
+                height: 300px;
+
+
+            }
+            .scatola10_immagine{
+                background-color: #bbb;
+                color: black;
+            }
+        }
+       
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="scatola1">
+    <div class="scatola1_soldi">
+        <h2>Circa 370 milioni di dollari</h2>
+        <div class="scatola1_descrizione">
+            <p>Il lancio inaugurale del razzo Ariane 5 dell'Agenzia Spaziale Europea fallì a causa di un bug nel software. Il sistema di navigazione riutilizzava codice dall'Ariane 4, che non era stato adattato ai cambiamenti delle prestazioni del nuovo razzo. Ciò provocò un errore di overflow in una conversione di un numero a virgola mobile. Il razzo deviò dalla sua rotta e fu distrutto</p>
+            <div class="scatola1_immagine">
+                <img src="Ariane5.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola2">
+    <div class="scatola2_soldi">
+        <h2>Circa 193 milioni di dollari</h2>
+        <div class="scatola2_descrizione">
+            <p>Questo errore si verificò perché il software che controllava il sistema di navigazione del Mars Climate Orbiter utilizzava unità imperiali (libbre-forza secondi) invece di unità metriche (newton secondi). La sonda entrò nell'atmosfera di Marte troppo bassa e fu distrutta.
+                Perdita della sonda spaziale e della missione.</p>
+            <div class="scatola2_immagine">
+                <img src="Mars_climate_orbiter.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola3">
+    <div class="scatola3_soldi">
+        <h2>Circa 440 milioni di dollari in 45 minuti</h2>
+        <div class="scatola3_descrizione">
+            <p>Knight Capital, una grande società di trading finanziario, installò un aggiornamento del software difettoso su uno dei suoi server. Questo software iniziò a fare milioni di operazioni di borsa errate, facendo crollare il prezzo delle azioni. L'azienda perse circa 440 milioni di dollari in meno di un'ora e fu successivamente acquisita.
+                Perdita finanziaria enorme e fine dell'azienda come entità indipendente.</p>
+            <div class="scatola3_immagine">
+                <img src="Knight_Capital.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola4">
+    <div class="scatola4_soldi">
+        <h2>Diverse vite umane</h2>
+        <div class="scatola4_descrizione">
+            <p>Therac-25 era una macchina per la radioterapia utilizzata negli ospedali. A causa di bug nel software, in alcune circostanze la macchina somministrava dosi di radiazioni letali ai pazienti. Il bug si manifestava solo in determinate sequenze operative, quindi non fu scoperto subito.
+                Almeno 5 persone morirono e molte altre subirono gravi lesioni a causa di sovraesposizione alle radiazioni.</p>
+            <div class="scatola4_immagine">
+                <img src="Therac-25.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola5">
+    <div class="scatola5_soldi">
+        <h2>Perdita di vite e milioni di dollari</h2>
+        <div class="scatola5_descrizione">
+            <p>Un errore di arrotondamento in un sistema di temporizzazione del software del Patriot Missile causò il fallimento dell'intercettazione di un missile Scud iracheno. Il missile colpì una caserma dell'esercito statunitense, uccidendo 28 soldati.
+                Perdita di vite umane e di fiducia nella tecnologia di difesa.</p>
+            <div class="scatola5_immagine">
+                <img src="Patriot_missile.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola6">
+    <div class="scatola6_soldi">
+        <h2>Circa 100 miliardi di dollari in preparazione e mitigazione</h2>
+        <div class="scatola6_descrizione">
+            <p>Sebbene non ci sia stata una grande catastrofe, il "Millennium Bug" ha richiesto investimenti massicci per evitare il collasso dei sistemi informatici. Il bug era causato dal fatto che molti software utilizzavano solo le ultime due cifre dell'anno (es. '99 per 1999), il che poteva portare a malfunzionamenti passando all'anno 2000.
+                Anche se il bug non causò gravi danni, il costo per la prevenzione fu enorme.</p>
+            <div class="scatola6_immagine">
+                <img src="Millenium_bug.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola7">
+    <div class="scatola7_soldi">
+        <h2>Circa 475 milioni di dollari</h2>
+        <div class="scatola7_descrizione">
+            <p>Un bug nei processori Intel Pentium causava errori di calcolo nelle divisioni in virgola mobile. Questo difetto divenne un problema di pubbliche relazioni per Intel dopo che gli scienziati iniziarono a notare discrepanze nei loro calcoli. Intel alla fine dovette ritirare i processori difettosi e rimborsare i clienti.
+                Costi enormi di sostituzione e danno alla reputazione di Intel.</p>
+            <div class="scatola7_immagine">
+                <img src="Intel.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola8">
+    <div class="scatola8_soldi">
+        <h2>Perdita di un'auto</h2>
+        <div class="scatola8_descrizione">
+            <p>Un aggiornamento del software del Tesla Model S causò il blocco dei freni a mano di alcune auto. In un caso, questo portò all'incendio e alla perdita completa di un'auto.
+                Danni materiali e possibili rischi per la sicurezza.</p>
+            <div class="scatola8_immagine">
+                <img src="Tesla.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola9">
+    <div class="scatola9_soldi">
+        <h2>Decine di milioni di dollari</h2>
+        <div class="scatola9_descrizione">
+            <p>Un aggiornamento software difettoso nel sistema di commutazione di AT&T portò a un blocco che durò circa 9 ore. Durante questo periodo, milioni di chiamate telefoniche furono interrotte negli Stati Uniti.
+                Danno alla reputazione e perdite finanziarie per AT&T, oltre a disagio per milioni di utenti.</p>
+            <div class="scatola9_immagine">
+                <img src="at.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+    <div class="scatola10">
+    <div class="scatola10_soldi">
+        <h2>Oltre 20 miliardi di dollari, molte vite perse</h2>
+        <div class="scatola10_descrizione">
+            <p>Il sistema MCAS (Maneuvering Characteristics Augmentation System) del Boeing 737 Max, progettato per correggere il comportamento di volo dell'aereo, aveva un bug che portava a una serie di incidenti aerei mortali. Questo errore portò alla perdita di controllo degli aerei in determinate situazioni, causando due incidenti fatali che uccisero 346 persone.
+                La Boeing subì gravi perdite economiche, danni alla reputazione e costi enormi per riparare il software e certificare nuovamente il modello. L' aereo fu bloccato a terra per quasi due anni.</p>
+            <div class="scatola10_immagine">
+                <img src="Boeing.jpg" alt="Avatar" style="width:300px;height:300px;">    
+            </div>
+
+
+
+
+</body>
+</html>
