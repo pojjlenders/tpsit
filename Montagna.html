@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a {
+            text-align: center;
+        }
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        body{
+            background-color: rgb(80, 116, 237);
+        }
+        #es1{
+            border: none;
+            background-color: rgba(115, 171, 210, 0.708);
+            margin: 10px;
+            padding: 15px;
+        }
+        #c1 {font-size: 15px;}
+        #c1 {
+            background-color: #363232a5;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+        #c1:hover {
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+           }
+    </style>
+</head>
+<body>
+    <div id="es1">
+    <img src="montagna.jpg" alt="" width="800" height="400" >
+    <br>
+    <div class="a">
+    <h1>Stai scalando questa montagna</h1>
+    </div>
+    <br>
+    <br>
+    <h3>Inserire in metri(m) quanto percorri dalla partenza alla pausa e poi dalla pausa all'arrivo</h3>
+    <label for="val1">Altezza del punto di partenza: </label>
+    <input type="text" name="" id="val1">
+    <br>
+    <br>
+    <label for="val2">Punto di pausa a: </label>
+    <input type="text" name="" id="val2">
+    <br>
+    <br>
+    <label for="val3">arrivo a: </label>
+    <input type="text" name="" id="val3">
+    <br>
+    <br>
+    <button id="c1" onclick="calcola()">calcola</button>
+    <p id="out1"> Risultato:</p>
+    </div>
+    <script>
+        const elementOut=document.getElementById("out1");
+        function calcola(){
+            let v1=document.getElementById("val1").value;
+            let v2=document.getElementById("val2").value;
+            let v3=document.getElementById("val3").value;
+            elementOut.innerHTML="Essendo la montagna abbastanza ripida la sua pendenza è dell'60% e dai recenti dati il suo dislivello totale è di: "+ (60*(v1+v2+v3))/100;
+        }
+    </script>
+</body>
+</html>
