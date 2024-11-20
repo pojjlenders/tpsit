@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Math</h1>
+<h2>The Math.random() Method</h2>
+<p>Math.random()*3 returns a random number between 0 and 3:</p>
+
+<button onclick="getTime()"> test sul click</button>
+<p id="demo"></p>
+<div>
+    <p id="out1"></p>
+</div>
+<div>
+<img id="sasso" style="opacity: 0;" src="https://ik.imagekit.io/ventis/prod/tr:n-product_full_image/content/images/prodotti/40/04/400426/20220401090257935.jpg" alt="">
+</div>
+<div>
+<img id="carta" style="opacity: 0;" src="https://png.pngtree.com/thumb_back/fw800/background/20231227/pngtree-authentic-crumpled-paper-texture-background-image_13880907.png" alt="">
+</div>
+<div>
+<img id="forbice" style="opacity: 0;" src="https://www.pianetacapello.it/wp-content/uploads/2021/02/Messa-Forbice-Professionale-Da-Taglio-5.5-Kiepe.jpg" alt="">
+</div>
+<script>
+const immagine1=document.getElementById("sasso");
+const immagine2=document.getElementById("carta");
+const immagine3=document.getElementById("forbice");
+const mioOutput=document.getElementById("out1");
+setInterval(getTime,500)
+    let x = Math.floor((Math.random() * 3) + 1);
+    document.getElementById("demo").innerHTML = n;
+    function getTime(){
+        let n1 = 3;
+        if(n1 === -1){
+            mioOutput.style.display="none";
+            if (x === 1){
+                mioOutput.style.display="none";
+                immagine1.style.opacity=1;
+            };
+            if (x === 2){
+                mioOutput.style.display="none";
+                immagine2.style.opacity=1;
+            };
+            if (x === 3){
+                mioOutput.style.display="none";
+                immagine3.style.opacity=1;
+            };
+        };
+        mioOutput.innerHTML+=" "+n1;
+        n1--;
+    }
+
+</script>
+
+</body>
+</html>
