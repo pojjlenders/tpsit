@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #out1{
+            font-size: 40px;
+            color: brown;
+        }
+        #out2{
+            font-size: 20px;
+            color: cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+    <p id="out1"></p>
+    <p id="out3"></p>
+    <div>
+        <p id="out2"></p>
+    </div>
+    <div>
+        <img id="sasso" style="opacity: 0;" src="sasso.png" alt="">
+        <img id="carta" style="opacity: 0;" src="carta.png" alt="">
+        <img id="forbice" style="opacity: 0;" src="forbice.png" alt="">
+    </div>
+    <script>
+        let morra=["sasso","carta","forbice"];
+        document.getElementById("out1").innerHTML=morra
+        const mioOutput=document.getElementById("out2");
+        const immagine1=document.getElementById("sasso");
+        const immagine2=document.getElementById("carta");
+        const immagine3=document.getElementById("forbice");
+        setInterval(getTime,700)
+        let n=3;
+        function getTime(){
+            if(n===-1){
+                mioOutput.style.display="none";
+                if(morra===0){
+                    immagine1.style.opacity=1;
+                };
+                if(morra===1){
+                    immagine2.style.opacity=1;
+                };
+                if(morra===2){
+                    immagine3.style.opacity=1;
+                };
+            };
+            mioOutput.innerHTML+=" "+n;
+            n--;
+        }
+        let numeroCasuale;
+        for(let i=0;i<50;i++){
+            numeroCasuale=Math.floor(Math.random()*3);
+            document.getElementById("out3").innerHTML+=morra[numeroCasuale] + " ";
+        }
+        console.log(numeroCasuale);
+        console.log(morra);
+    </script>
+</body>
+</html>
