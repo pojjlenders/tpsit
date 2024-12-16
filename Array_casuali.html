@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 1</title>
+
+<style>
+    #container {
+        height: 200px;
+        width: 500px;
+        display: inline-block;
+    }
+</style>
+
+</head>
+<body>
+
+    <h1>Array esercizio 1</h1>
+    <h3>Ogni 3 secondi verrà visualizzato un numero casuale tra 1 e 90</h3>
+    <p>Lista di numeri casuali:</p>
+
+    <div id="container">
+        <p id="out1"></p>
+    </div>
+
+    <script>
+        
+        let numeri = [];
+        
+        function estraiNumeroCasuale() {
+        
+            let numeroCasuale = Math.floor(Math.random() * 90);
+            
+            
+            numeri[numeri.length] = numeroCasuale;  
+            
+       
+            aggiornaDisplay();
+        }
+
+        
+        function aggiornaDisplay() {
+            let displayString = "";
+            for (let i = 0; i < numeri.length; i++) {
+                displayString += numeri[i] + " ";  
+            }
+            document.getElementById("out1").innerHTML = displayString;
+        }
+
+        
+        setInterval(estraiNumeroCasuale, 3000);
+    </script>
+
+</body>
+</html>
