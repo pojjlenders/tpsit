@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>verifica 1 (Simulazione)</title>
+    <style>
+        #container {
+            height: 200px;
+            width: 500px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Simulazione verifica 1</h1>
+
+    <div id="container">
+        <p id="out1"></p>
+        <p id="out2"></p>
+        <p id="out3"></p>
+        <p id="out4"></p>
+        <p id="out5"></p>
+        <p id="out6"></p>
+        <p id="out7"></p>
+        <p id="out8"></p>
+    </div>
+
+
+    <script>
+        let numeri=[]
+        let cont=0;
+         
+        setInterval(estraiNumeroCasuale, 5000);
+        function estraiNumeroCasuale(){
+            let numeroCasuale=Math.floor((Math.random()*1000)+1);
+            document.getElementById("out1").innerHTML=numeroCasuale;
+            if (numeroCasuale%2==0){
+                document.getElementById("out2").innerHTML="pari";
+            }else{
+                document.getElementById("out2").innerHTML="dispari";
+            }
+            for(let i=2;i<numeroCasuale/2;i++){
+                if(numeroCasuale%i==0){
+                    cont++;
+                }
+            }
+            if(cont==0){
+                    document.getElementById("out3").innerHTML="Il numero è primo";
+                }else{
+                    document.getElementById("out3").innerHTML="Il numero non è primo";
+                }
+            document.getElementById("out4").innerHTML="Doppio: "+numeroCasuale*2;
+            document.getElementById("out5").innerHTML="Metà: "+Math.floor(numeroCasuale/2);
+            document.getElementById("out6").innerHTML="Complemento: "+(1000-numeroCasuale);
+            document.getElementById("out7").innerHTML="Somma: "+(numeroCasuale+(numeroCasuale+1)+(numeroCasuale-1));
+            document.getElementById("out8").innerHTML="Per 3,14: "+Math.floor(numeroCasuale*3.14);
+            }
+        
+
+
+
+    </script>
+
+</body>
+</html>
