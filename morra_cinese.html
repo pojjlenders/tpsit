@@ -1,63 +1,142 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Gioco Morra Cinese</title>
+
     <style>
-        #out1{
-            font-size: 40px;
-            color: brown;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
         }
-        #out2{
+
+        #out1 {
             font-size: 20px;
-            color: cornflowerblue;
+            margin-top: 20px;
+        }
+
+        #out2 {
+            font-size: 25px;
+            color: brown;
+            margin-top: 10px;
+        }
+
+        .opzione {
+            display: inline-block;
+            cursor: pointer;
+            width: 100px;
+            margin: 10px;
+            text-align: center;
+        }
+
+        .opzione img {
+            width: 80px;
+            height: 80px;
+        }
+
+        #timer {
+            font-size: 30px;
+            color: red;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <p id="out1"></p>
-    <p id="out3"></p>
-    <div>
-        <p id="out2"></p>
+
+    <h1>Gioco Morra Cinese</h1>
+
+    <div id="opzioni">
+        <div class="opzione" id="sasso">
+            <img src="sasso.png" alt="Sasso">
+            <p>Sasso</p>
+        </div>
+        <div class="opzione" id="carta">
+            <img src="carta.png" alt="Carta">
+            <p>Carta</p>
+        </div>
+        <div class="opzione" id="forbice">
+            <img src="forbice.png" alt="Forbice">
+            <p>Forbice</p>
+        </div>
     </div>
-    <div>
-        <img id="sasso" style="opacity: 0;" src="sasso.png" alt="">
-        <img id="carta" style="opacity: 0;" src="carta.png" alt="">
-        <img id="forbice" style="opacity: 0;" src="forbice.png" alt="">
-    </div>
+
+    <div id="out1"></div>
+    <div id="out2"></div>
+    <div id="timer"></div>
+
     <script>
-        let morra=["sasso","carta","forbice"];
-        document.getElementById("out1").innerHTML=morra
-        const mioOutput=document.getElementById("out2");
-        const immagine1=document.getElementById("sasso");
-        const immagine2=document.getElementById("carta");
-        const immagine3=document.getElementById("forbice");
-        setInterval(getTime,700)
-        let n=3;
-        function getTime(){
-            if(n===-1){
-                mioOutput.style.display="none";
-                if(morra===0){
-                    immagine1.style.opacity=1;
-                };
-                if(morra===1){
-                    immagine2.style.opacity=1;
-                };
-                if(morra===2){
-                    immagine3.style.opacity=1;
-                };
-            };
-            mioOutput.innerHTML+=" "+n;
-            n--;
+        let morra = ["sasso", "carta", "forbice"];
+        let punteggioGiocatore = 0;
+        let punteggioBot = 0;
+        let timer;
+
+        function morraScore(giocatore, bot) {
+            if (giocatore === bot) {
+                return "Pareggio!";
+            } else if (
+                (giocatore === "sasso" && bot === "forbice") ||
+                (giocatore === "forbice" && bot === "carta") ||
+                (giocatore === "carta" && bot === "sasso")
+            ) {
+                punteggioGiocatore++;
+                return "Hai vinto!";
+            } else {
+                punteggioBot++;
+                return "Hai perso!";
+            }
         }
-        let numeroCasuale;
-        for(let i=0;i<50;i++){
-            numeroCasuale=Math.floor(Math.random()*3);
-            document.getElementById("out3").innerHTML+=morra[numeroCasuale] + " ";
+
+        function scegliBot() {
+            let numeroCasuale = Math.floor(Math.random() * 3);
+            return morra[numeroCasuale];
         }
-        console.log(numeroCasuale);
-        console.log(morra);
+
+
+        function aggiornaPunteggio() {
+            document.getElementById("out1").innerHTML = `Punteggio Giocatore: ${punteggioGiocatore} | Punteggio Bot: ${punteggioBot}`;
+        }
+
+
+        function avviaTimer() {
+            let countdown = 3;
+            document.getElementById("timer").innerHTML = `Inizio tra: ${countdown}s`;
+
+            timer = setInterval(function() {
+                countdown--;
+                document.getElementById("timer").innerHTML = `Inizio tra: ${countdown}s`;
+
+                if (countdown <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("timer").innerHTML = "";
+                }
+            }, 1000);
+        }
+
+        function iniziaGioco(sceltaGiocatore) {
+            avviaTimer(); 
+            
+            setTimeout(function() {
+                let sceltaBot = scegliBot();
+                let risultato = morraScore(sceltaGiocatore, sceltaBot);
+
+                document.getElementById("out2").innerHTML = `Bot ha scelto: ${sceltaBot}. ${risultato}`;
+                aggiornaPunteggio();
+            }, 3000);
+        }
+
+        document.getElementById("sasso").onclick = function() {
+            iniziaGioco("sasso");
+        };
+
+        document.getElementById("carta").onclick = function() {
+            iniziaGioco("carta");
+        };
+
+        document.getElementById("forbice").onclick = function() {
+            iniziaGioco("forbice");
+        };
     </script>
+
 </body>
 </html>
