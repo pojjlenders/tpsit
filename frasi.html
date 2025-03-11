@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore di Frasi Casuali</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input, button {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-align: center;
+            padding: 10px;
+            background-color: #e2f7e2;
+            border: 1px solid #4CAF50;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Generatore di Frasi Casuali</h1>
+
+    <div class="container">
+        <form id="phraseForm">
+            <label for="soggetti">Inserisci Soggetti (separati da virgola):</label>
+            <input type="text" id="soggetti" required>
+
+            <label for="verbi">Inserisci Verbi (separati da virgola):</label>
+            <input type="text" id="verbi" required>
+
+            <label for="complementi">Inserisci Complementi (separati da virgola):</label>
+            <input type="text" id="complementi" required>
+
+            <button type="button" onclick="generaFrase()">Genera Frase</button>
+        </form>
+
+        <div id="output" class="output"></div>
+    </div>
+
+    <script>
+        function generaFrase() {
+            // Ottieni gli input dell'utente
+            const soggetti = document.getElementById('soggetti').value.split(',').map(item => item.trim());
+            const verbi = document.getElementById('verbi').value.split(',').map(item => item.trim());
+            const complementi = document.getElementById('complementi').value.split(',').map(item => item.trim());
+
+            // Verifica che ci siano almeno un soggetto, un verbo e un complemento
+            if (soggetti.length > 0 && verbi.length > 0 && complementi.length > 0) {
+                // Genera gli indici casuali per ciascuna categoria
+                const soggettoCasuale = soggetti[Math.floor(Math.random() * soggetti.length)];
+                const verboCasuale = verbi[Math.floor(Math.random() * verbi.length)];
+                const complementoCasuale = complementi[Math.floor(Math.random() * complementi.length)];
+
+                // Costruisci la frase
+                const frase = `${soggettoCasuale} ${verboCasuale} ${complementoCasuale}.`;
+
+                // Mostra la frase generata
+                document.getElementById('output').innerText = frase;
+            } else {
+                document.getElementById('output').innerText = 'Per favore, inserisci delle parole in tutti i campi.';
+            }
+        }
+    </script>
+
+</body>
+</html>
