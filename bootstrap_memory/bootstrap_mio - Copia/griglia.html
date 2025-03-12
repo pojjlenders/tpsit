@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Memory Game</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+      body {
+        background-color: pink;
+      }
+      .cube-container {
+        display: flex;
+        
+        justify-content: center;
+        
+      }
+      .cube {
+        background-color: purple;
+        height: 100px;
+        width: 100px;
+        border: 1px solid white;
+        cursor: pointer;
+        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .cube:hover {
+        background-color: #9b59b6;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      }
+      .illuminated {
+        background-color: #9b59b6;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+      }
+      .game-info {
+        text-align: center;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" style="background-color: violet; margin-top: -110px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color: white;">
+            <img src="memory_logo.png" alt="Logo" width="90" height="60" class="d-inline-block align-text-top">
+            Memory Beach
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="#" style="color: white;">Credits</a>
+              <a class="nav-link" href="#" style="color: white;">Settings</a>
+              <a class="nav-link" href="#" style="color: white;">Link IG</a>
+              <a class="nav-link" href="#" style="color: white;">Help</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="container" style="color: #560651;">
+      <div class="game-info">
+        <h1>Memory Game</h1>
+        <p id="status">Premi "Inizio" per iniziare!</p>
+        <button id="start-btn" class="btn" style="background-color: blueviolet; color: white;">Inizio</button>
+        <p id="score">Punteggio: 0</p>
+      </div>
+
+      <div class="row">
+        <div class="cube-container">
+          <div class="cube" data-id="0"></div>
+          <div class="cube" data-id="1"></div>
+          <div class="cube" data-id="2"></div>
+        </div>
+        <div class="cube-container">
+          <div class="cube" data-id="3"></div>
+          <div class="cube" data-id="4"></div>
+          <div class="cube" data-id="5"></div>
+        </div>
+        <div class="cube-container">
+          <div class="cube" data-id="6"></div>
+          <div class="cube" data-id="7"></div>
+          <div class="cube" data-id="8"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+      let sequence = [];
+      let userInput = [];
+      let score = 0;
+      const cubes = document.querySelectorAll('.cube');
+      const startButton = document.getElementById('start-btn');
+      const status = document.getElementById('status');
+      const scoreDisplay = document.getElementById('score');
+
+      function startGame() {
+        score = 0;
+        sequence = [];
+        userInput = [];
+        updateStatus('Sequenza generata, segui i pulsanti!');
+        scoreDisplay.textContent = 'Punteggio: ' + score;
+        nextRound();
+      }
+
+      function nextRound() {
+        userInput = [];
+        let randomCube = Math.floor(Math.random() * 9); 
+        sequence.push(randomCube);
+        highlightSequence();
+      }
+
+      function highlightSequence() {
+        let i = 0;
+        const interval = setInterval(() => {
+          cubes[sequence[i]].classList.add('illuminated');
+          setTimeout(() => {
+            cubes[sequence[i]].classList.remove('illuminated');
+          }, 500); 
+          i++;
+          if (i === sequence.length) {
+            clearInterval(interval);
+            enableUserInput();
+          }
+        }, 1000); 
+      }
+
+      function enableUserInput() {
+        cubes.forEach(cube => {
+          cube.addEventListener('click', handleUserInput);
+        });
+        updateStatus('Clicca sui pulsanti nella stessa sequenza!');
+      }
+
+
+      function handleUserInput(event) {
+        let clickedId = parseInt(event.target.getAttribute('data-id'));
+        userInput.push(clickedId);
+
+        if (userInput[userInput.length - 1] !== sequence[userInput.length - 1]) {
+          endGame('Hai sbagliato! Game over.');
+          return;
+        }
+
+        if (userInput.length === sequence.length) {
+          score++;
+          scoreDisplay.textContent = 'Punteggio: ' + score;
+          setTimeout(nextRound, 1000);
+        }
+      }
+
+
+      function updateStatus(message) {
+        status.textContent = message;
+      }
+
+
+      function endGame(message) {
+        updateStatus(message);
+        startButton.textContent = 'Ricomincia';
+      }
+
+
+      startButton.addEventListener('click', () => {
+        startGame();
+        startButton.textContent = 'In corso...';
+      });
+    </script>
+  </body>
+</html>
