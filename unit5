@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Unità 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+    </head>
+  <body>
+    <ul class="nav nav-underline"  style="background-color: rgb(197, 197, 197);">
+        <li class="nav-item" style="margin-left: 20px;">
+          <a class="nav-link active" aria-current="page" href="#">Unità 5</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Esercizi in laboraotrio</a>
+        </li>
+      </ul>
+    <h1 align="center">Unità 5</h1>
+    <h4 align="center">Da pagina 272 a 289</h4>
+    <br>
+    <h3 align="center">Tipi di rete</h3>
+    <img src="reti.png" class="rounded mx-auto d-block" alt="..." align="center">
+    <h2 align="center">Topologia di reti</h2>
+    <div style="margin-left: 400px; margin-right: 400px; background-color: rgb(173, 173, 173);">
+      <img src="stella.jpg" class="rounded float-end" alt="Rete a stella" style="margin: 4px;">
+      <h3 style="margin-left: 25px;">Rete a stella</h3>
+      <h6 style="margin-left: 25px; margin-top: 50px;">La rete a stella è una configurazione in cui tutti i dispositivi sono connessi a un nodo centrale (hub o switch).<br> Le comunicazioni passano attraverso questo nodo, che coordina il traffico.</h6>
+      <br><br><br>
+      <br><br><br>
+    </div>
+    <div style="margin-left: 400px; margin-right: 400px; background-color: rgb(173, 173, 173)">
+      <img src="retebus.png" class="rounded float-start" alt="Rete a bus" style="margin-left: 5px;">
+      <h3>Rete a bus</h3>
+      <h6 style="margin-right: 100px; margin-left: 25px;">La rete a bus è una topologia in cui tutti i dispositivi sono collegati a un unico cavo di trasmissione. I dati viaggiano lungo il bus e solo il dispositivo destinatario li riceve. È semplice ed economica, ma la sua performance può diminuire con l'aumento dei dispositivi. Se il cavo principale si danneggia, tutta la rete può essere compromessa. Oggi è meno utilizzata nelle reti moderne.</h6>
+      <br><br><br>
+    </div>
+    <div style="margin-left: 400px; margin-right: 400px; background-color: rgb(173, 173, 173)">
+      <h3 style="margin-left: 25px;">Rete ad anello</h3>
+      <img src="anello.jpg" class="rounded float-end" alt="Rete ad anello" style="margin-right: 5px;">
+      <h6 style="margin-left: 25px;margin-right: 400px;">La rete ad anello è una topologia in cui i dispositivi sono connessi in un ciclo chiuso. I dati viaggiano da un dispositivo all'altro fino a raggiungere la destinazione. Può essere unidirezionale o bidirezionale. È semplice da implementare ma vulnerabile a guasti: se un nodo o un collegamento si rompe, l'intera rete può essere compromessa. Tuttavia, alcune varianti come l'anello ridondante migliorano l'affidabilità.</h6>
+      <br><br><br>
+      <br><br><br><br>
+    </div>
+    <div style="margin-left: 400px; margin-right: 400px; background-color: rgb(173, 173, 173)">
+      <img src="maglia.png" class="rounded float-start" alt="rete a maglia" style="margin-left: 5px;">
+      <h3 style="margin-right: 100px; margin-left: 25px;">Rete a maglia</h3>
+      <h6 style="margin-right: 100px; margin-left: 25px;">La rete a maglia è una topologia in cui ogni nodo è connesso a più nodi, creando una rete interconnessa. È molto resiliente e scalabile, poiché i guasti possono essere aggirati tramite percorsi alternativi. Offre alta affidabilità e prestazioni, ma può essere complessa e costosa da gestire. È usata in applicazioni come le reti Wi-Fi mesh e le reti di sensori.</h6>
+      <br><br><br>
+      <br><br><br>
+
+    </div>
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  </body>
+</html>
