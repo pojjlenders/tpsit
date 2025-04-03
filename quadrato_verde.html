@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cubo che si muove</title>
+    <style>
+
+        #container {
+            width: 500px;
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        #cube {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="cube"></div>
+    </div>
+
+    <script>
+        const cube = document.getElementById('cube');
+        const container = document.getElementById('container');
+
+        const cubeSize = 50;
+        let x = 0;
+        let y = 0;
+        let direction = 'east';
+        const speed = 5;
+
+        function moveCube() {
+            switch(direction) {
+                case 'east':
+                    x += speed;
+                    if (x + cubeSize >= container.offsetWidth) {
+                        direction = 'south';
+                    }
+                    break;
+                case 'south':
+                    y += speed;
+                    if (y + cubeSize >= container.offsetHeight) {
+                        direction = 'west';
+                    }
+                    break;
+                case 'west':
+                    x -= speed;
+                    if (x <= 0) {
+                        direction = 'north';
+                    }
+                    break;
+                case 'north':
+                    y -= speed;
+                    if (y <= 0) {
+                        direction = 'east';
+                    }
+                    break;
+            }
+
+            cube.style.left = `${x}px`;
+            cube.style.top = `${y}px`;
+        }
+
+        setInterval(moveCube, 40);
+    </script>
+</body>
+</html>
