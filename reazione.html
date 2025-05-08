@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Test Tempo di Reazione</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    #startBtn, #clickBtn {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+    #clickBtn {
+      display: none;
+    }
+    #result {
+      font-size: 24px;
+      margin-top: 30px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Testa il tuo tempo di reazione</h1>
+  <p>Premi "Inizia", poi clicca il bottone appena lo vedi apparire!</p>
+
+  <button id="startBtn">Inizia</button>
+  <button id="clickBtn">CLICCA!</button>
+
+  <div id="result"></div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const clickBtn = document.getElementById("clickBtn");
+    const resultDiv = document.getElementById("result");
+
+    let startTime;
+
+    startBtn.addEventListener("click", () => {
+      resultDiv.textContent = "";
+      clickBtn.style.display = "none";
+      startBtn.disabled = true;
+
+      const delay = Math.random() * 3000 + 2000; // Da 2 a 5 secondi
+
+      setTimeout(() => {
+        startTime = new Date().getTime();
+        clickBtn.style.display = "inline-block";
+      }, delay);
+    });
+
+    clickBtn.addEventListener("click", () => {
+      const reactionTime = new Date().getTime() - startTime;
+      resultDiv.textContent = `Tempo di reazione: ${reactionTime} ms`;
+      clickBtn.style.display = "none";
+      startBtn.disabled = false;
+    });
+  </script>
+
+</body>
+</html>
