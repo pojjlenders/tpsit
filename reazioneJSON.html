@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Test e Analisi Tempi di Reazione</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button, input {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #clickBtn {
+      background-color: #007bff;
+      display: none;
+    }
+
+    .result, .analysis {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-top: 1.5rem;
+    }
+
+    canvas {
+      margin-top: 2rem;
+    }
+
+    #result {
+      font-size: 24px;
+      margin-top: 30px;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Testa e Analizza il tuo Tempo di Reazione</h1>
+  <p>Premi "Inizia", poi clicca il bottone appena lo vedi apparire!</p>
+
+  <button id="startBtn">Inizia</button>
+  <button id="clickBtn">CLICCA!</button>
+  <button onclick="downloadJSON()">Scarica dati JSON</button>
+
+  <div id="result"></div>
+
+  <div class="result">
+    <p><strong>Tempi registrati (s):</strong> <span id="numberList">Nessuno</span></p>
+    <p><strong>Media:</strong> <span id="mean">-</span> s</p>
+    <p><strong>Deviazione Standard:</strong> <span id="stdDev">-</span> s</p>
+  </div>
+
+  <canvas id="chart" width="600" height="300"></canvas>
+
+  <div class="analysis">
+    <h3>Analisi:</h3>
+    <p id="feedback">Effettua almeno 2 test per l’analisi.</p>
+  </div>
+
+  <script>
+    const startBtn = document.getElementById("startBtn");
+    const clickBtn = document.getElementById("clickBtn");
+    const resultDiv = document.getElementById("result");
+
+    const numbers = [];
+    let startTime, chart;
+
+    // Reazione test
+    startBtn.addEventListener("click", () => {
+      resultDiv.textContent = "";
+      clickBtn.style.display = "none";
+      startBtn.disabled = true;
+
+      const delay = Math.random() * 3000 + 2000;
+      setTimeout(() => {
+        startTime = new Date().getTime();
+        clickBtn.style.display = "inline-block";
+      }, delay);
+    });
+
+    clickBtn.addEventListener("click", () => {
+      const reactionTime = new Date().getTime() - startTime;
+      const reactionSeconds = (reactionTime / 1000).toFixed(2);
+      resultDiv.textContent = `Tempo di reazione: ${reactionTime} ms`;
+
+      numbers.push(parseFloat(reactionSeconds));
+      updateDisplay();
+
+      clickBtn.style.display = "none";
+      startBtn.disabled = false;
+    });
+
+    // Analisi e grafico
+    function updateDisplay() {
+      document.getElementById('numberList').textContent = numbers.join(', ');
+      const mean = calculateMean(numbers);
+      const stdDev = calculateStandardDeviation(numbers, mean);
+
+      document.getElementById('mean').textContent = mean.toFixed(2);
+      document.getElementById('stdDev').textContent = stdDev.toFixed(2);
+
+      renderChart(numbers, mean, stdDev);
+      analyzeData(stdDev);
+    }
+
+    function calculateMean(arr) {
+      return arr.reduce((a, b) => a + b, 0) / arr.length;
+    }
+
+    function calculateStandardDeviation(arr, mean) {
+      const variance = arr.reduce((sum, val) => sum + Math.pow(val - mean, 2), 0) / arr.length;
+      return Math.sqrt(variance);
+    }
+
+    function renderChart(data, mean, stdDev) {
+      const labels = data.map((_, i) => `Prova ${i + 1}`);
+      const meanLine = new Array(data.length).fill(mean);
+      const upper = new Array(data.length).fill(mean + stdDev);
+      const lower = new Array(data.length).fill(mean - stdDev);
+
+      if (chart) chart.destroy();
+      const ctx = document.getElementById('chart').getContext('2d');
+
+      chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [
+            {
+              label: 'Tempi (s)',
+              data,
+              borderColor: 'blue',
+              tension: 0.3
+            },
+            {
+              label: 'Media',
+              data: meanLine,
+              borderColor: 'green',
+              borderDash: [5, 5]
+            },
+            {
+              label: '+1 Dev. Std.',
+              data: upper,
+              borderColor: 'orange',
+              borderDash: [3, 3]
+            },
+            {
+              label: '-1 Dev. Std.',
+              data: lower,
+              borderColor: 'orange',
+              borderDash: [3, 3]
+            }
+          ]
+        },
+        options: {
+          plugins: {
+            legend: { position: 'top' },
+            title: {
+              display: true,
+              text: 'Distribuzione dei Tempi'
+            }
+          }
+        }
+      });
+    }
+
+    function analyzeData(stdDev) {
+      const feedback = document.getElementById('feedback');
+      if (numbers.length < 2) {
+        feedback.textContent = 'Effettua almeno 2 test per l’analisi.';
+        return;
+      }
+
+      if (stdDev < 0.3) {
+        feedback.textContent = "Ottimo! I tuoi tempi sono molto costanti.";
+      } else if (stdDev < 1) {
+        feedback.textContent = "I tuoi tempi sono abbastanza stabili.";
+      } else {
+        feedback.textContent = "Attenzione! I tuoi tempi sono molto variabili. Prova a concentrarti meglio.";
+      }
+    }
+
+    // Scarica JSON
+    function downloadJSON() {
+      if (numbers.length === 0) {
+        alert("Nessun dato disponibile per il download.");
+        return;
+      }
+
+      const data = {
+        tempi_reazione: numbers,
+        media: calculateMean(numbers),
+        deviazione_standard: calculateStandardDeviation(numbers, calculateMean(numbers))
+      };
+
+      const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "tempi_reazione.json";
+      a.click();
+
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
