@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contatore MVC Semplice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        #counter {
+            font-size: 48px;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px solid #333;
+            display: inline-block;
+            width: 100px;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border: 2px solid #333;
+            border-radius: 6px;
+            background-color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="counter">0</div><br>
+    <button id="incrementBtn">Aumenta</button>
+    <button id="decrementBtn">Diminuisci</button>
+
+    <script>
+        // Model
+        class CounterModel {
+            constructor() {
+                this.value = 0;
+            }
+            increment() {
+                this.value++;
+            }
+            decrement() {
+                this.value--;
+            }
+            getValue() {
+                return this.value;
+            }
+        }
+
+        // View
+        class CounterView {
+            constructor() {
+                this.counterElement = document.getElementById("counter");
+                this.incrementButton = document.getElementById("incrementBtn");
+                this.decrementButton = document.getElementById("decrementBtn");
+            }
+            display(value) {
+                this.counterElement.textContent = value;
+            }
+            bindIncrementButton(handler) {
+                this.incrementButton.addEventListener("click", handler);
+            }
+            bindDecrementButton(handler) {
+                this.decrementButton.addEventListener("click", handler);
+            }
+        }
+
+        // Controller
+        class CounterController {
+            constructor(model, view) {
+                this.model = model;
+                this.view = view;
+
+                this.view.bindIncrementButton(this.incrementCounter.bind(this));
+                this.view.bindDecrementButton(this.decrementCounter.bind(this));
+            }
+            incrementCounter() {
+                this.model.increment();
+                this.view.display(this.model.getValue());
+            }
+            decrementCounter() {
+                this.model.decrement();
+                this.view.display(this.model.getValue());
+            }
+        }
+
+        const model = new CounterModel();
+        const view = new CounterView();
+        const controller = new CounterController(model, view);
+
+        view.display(model.getValue());
+    </script>
+
+</body>
+</html>
