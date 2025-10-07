@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catalogo Prodotti</title>
+  <script src="https://unpkg.com/vue@3" defer></script>
+  <script src="./app.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    table {
+      border-collapse: collapse;
+      width: 60%;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+    <h2>Catalogo Prodotti</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Prezzo (€)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="prodotto in prodotti" :key="prodotto.id">
+          <td>{{ prodotto.id }}</td>
+          <td>{{ prodotto.nome }}</td>
+          <td>{{ prodotto.prezzo.toFixed(2) }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semaforo con Vue.js</title>
+  <script src="https://unpkg.com/vue@3" defer></script>
+  <script src="./app.js" defer></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; text-align: center; }
+
+    .box {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 20px auto;
+      color: white;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+
+    .rosso { background-color: red; }
+    .giallo { background-color: gold; color: black; }
+    .verde { background-color: green; }
+
+    button { margin: 5px; padding: 8px 15px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <div id="app">
+
+    <h2>Semaforo</h2>
+    <div class="box" :class="coloreSemaforo">
+      <p v-if="coloreSemaforo === 'rosso'">Stop</p>
+      <p v-else-if="coloreSemaforo === 'giallo'">Attenzione</p>
+      <p v-else>Vai!</p>
+    </div>
+
+    <div>
+      <button @click="coloreSemaforo = 'rosso'">Rosso</button>
+      <button @click="coloreSemaforo = 'giallo'">Giallo</button>
+      <button @click="coloreSemaforo = 'verde'">Verde</button>
+    </div>
+
+  </div>
+
+</body>
+</html>
