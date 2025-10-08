@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Form di Registrazione Semplice</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <style>
+        form { margin-bottom: 1em; }
+        label { margin-right: 1em; }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <form @submit.prevent>
+            <div>
+                <label for="nome">Nome:</label>
+                <input id="nome" v-model="nome" type="text" />
+            </div>
+            <div>
+                <span>Genere:</span>
+                <label>
+                    <input type="radio" value="Uomo" v-model="genere" /> Uomo
+                </label>
+                <label>
+                    <input type="radio" value="Donna" v-model="genere" /> Donna
+                </label>
+                <label>
+                    <input type="radio" value="Altro" v-model="genere" /> Altro
+                </label>
+            </div>
+            <div>
+                <label for="paese">Paese:</label>
+                <select id="paese" v-model="paese">
+                    <option value="">Seleziona...</option>
+                    <option value="Italia">Italia</option>
+                    <option value="Germania">Germania</option>
+                    <option value="Francia">Francia</option>
+                </select>
+            </div>
+        </form>
+        <div>
+            <h3>Riepilogo</h3>
+            <p><strong>Nome:</strong> {{ nome }}</p>
+            <p><strong>Genere:</strong> {{ genere }}</p>
+            <p><strong>Paese:</strong> {{ paese }}</p>
+        </div>
+    </div>
+    <script>
+        const { createApp } = Vue;
+        createApp({
+            data() {
+                return {
+                    nome: '',
+                    genere: '',
+                    paese: ''
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>
