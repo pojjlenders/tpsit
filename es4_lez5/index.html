@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Info Card Component</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    #app {
+      padding: 20px;
+      font-family: Arial, sans-serif;
+    }
+
+    .info-card {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      max-width: 300px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .info-card h3 {
+      margin-top: 0;
+      color: #2c3e50;
+    }
+
+    .info-card p {
+      margin: 8px 0 0;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <info-card></info-card>
+    <info-card></info-card>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
