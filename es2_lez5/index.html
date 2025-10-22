@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Avatar dinamico con Vue</title>
+  <style>
+    #app {
+      padding: 20px;
+      font-family: sans-serif;
+    }
+    .avatar {
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h2>Avatar Dinamico</h2>
+
+    <label>
+      Larghezza (px):
+      <input type="number" v-model="width" />
+    </label>
+
+    <label>
+      Altezza (px):
+      <input type="number" v-model="height" />
+    </label>
+
+    <label>
+      Colore di sfondo:
+      <input type="color" v-model="backgroundColor" />
+    </label>
+
+    <div 
+      class="avatar"
+      :style="avatarStyle">
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

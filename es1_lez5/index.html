@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezioni di Vue.js</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #a7a5a59f; }
+        .successo { background-color: #22b945bd; }
+        .errore { background-color: #c22f2fb9; }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+	   <h2>Binding di Classi</h2>
+       <div class="box" :class="{ 'successo': isActive, 'errore': hasError }">
+          Testo con classi dinamiche
+       </div>
+       <button @click="isActive = !isActive">Imposta Successo</button>
+       <button @click="hasError = !hasError">Imposta Errore</button>
+
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="./app.js"></script>
+</body>
+</html>
