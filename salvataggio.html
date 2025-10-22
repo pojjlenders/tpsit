@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Salvataggio Automatico con Vue.js</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    #status {
+      margin-top: 10px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Salvataggio Automatico</h1>
+    <textarea v-model="testo" placeholder="Scrivi qualcosa..." rows="5" cols="40"></textarea>
+    <p id="status">{{ messaggio }}</p>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          testo: '',
+          messaggio: ''
+        };
+      },
+      watch: {
+        testo(newVal, oldVal) {
+          this.messaggio = "Sto salvando...";
+          // Se ci sono salvataggi pendenti, cancella il timeout precedente
+          if (this.saveTimeout) {
+            clearTimeout(this.saveTimeout);
+          }
+          // Dopo 1 secondo cambia messaggio in "Salvato!"
+          this.saveTimeout = setTimeout(() => {
+            this.messaggio = "Salvato!";
+          }, 1000);
+        }
+      },
+      beforeUnmount() {
+        if (this.saveTimeout) {
+          clearTimeout(this.saveTimeout);
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
