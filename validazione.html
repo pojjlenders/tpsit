@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Validazione Input Username con Vue.js</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <style>
+    .error {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <h1>Validazione Username</h1>
+    <input type="text" v-model="username" placeholder="Inserisci username" />
+    <p v-if="errore" class="error">Username troppo corto! (min 5 caratteri)</p>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          username: '',
+          errore: false
+        };
+      },
+      watch: {
+        username(newVal) {
+          this.errore = newVal.length > 0 && newVal.length < 5;
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
