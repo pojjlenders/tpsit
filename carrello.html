@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carrello Semplice con Vue.js</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+  <div id="app">
+    <h1>Carrello</h1>
+    <ul>
+      <li v-for="(prodotto, index) in carrello" :key="index">
+        {{ prodotto.nome }} - € {{ prodotto.prezzo.toFixed(2) }}
+      </li>
+    </ul>
+    <h3>Totale: € {{ totaleCarrello.toFixed(2) }}</h3>
+  </div>
+
+  <script>
+    const { createApp } = Vue;
+
+    createApp({
+      data() {
+        return {
+          carrello: [
+            { nome: "Prodotto A", prezzo: 12.50 },
+            { nome: "Prodotto B", prezzo: 7.30 },
+            { nome: "Prodotto C", prezzo: 15.00 }
+          ]
+        };
+      },
+      computed: {
+        totaleCarrello() {
+          return this.carrello.reduce((acc, prodotto) => acc + prodotto.prezzo, 0);
+        }
+      }
+    }).mount('#app');
+  </script>
+</body>
+</html>
