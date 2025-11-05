@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezioni di Vue.js</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        
+        .stars {
+            display: flex;
+            gap: 5px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #ccc;
+        }
+
+        .star.active {
+            color: gold;
+        }
+
+        .valutazione {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+   <div id="app">	
+        <div class="box">
+            <h2>Valutazione a Stelle</h2>
+
+            <star-rating @imposta-valutazione="valutazione = $event"></star-rating>
+
+            <div class="valutazione" v-if="valutazione">
+                Hai dato una valutazione di {{ valutazione }} stelle.
+            </div>
+        </div>
+   </div>
+
+   <script src="https://unpkg.com/vue@3"></script>
+   <script src="./app.js"></script>
+</body>
+</html>
