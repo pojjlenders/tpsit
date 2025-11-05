@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezioni di Vue.js</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+
+        .alert {
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            color: white;
+            font-weight: bold;
+        }
+        .success {
+            background-color: #28a745;
+            border: 1px solid #1e7e34;
+        }
+        .error {
+            background-color: #dc3545;
+            border: 1px solid #b21f2d;
+        }
+    </style>
+</head>
+<body>
+
+   <div id="app">	
+
+      <alert-box messaggio="Prodotti caricati con successo!" tipo="success"></alert-box>
+      <alert-box messaggio="Errore nel caricamento dei dati!" tipo="error"></alert-box>
+   </div>
+
+   <script src="https://unpkg.com/vue@3"></script>
+   <script src="./app.js"></script>
+</body>
+</html>
