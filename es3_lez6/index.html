@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lezioni di Vue.js</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .box { padding: 15px; border: 1px solid #ccc; margin-top: 10px; border-radius: 5px; background-color: #f9f9f9; }
+        .overlay {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .modal {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            min-width: 300px;
+            text-align: center;
+        }
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+   <div id="app">	
+        <button v-if="!modaleAperta" @click="apriModale">Apri Modale</button>
+
+        <modal-dialog 
+            v-if="modaleAperta" 
+            @chiudi="modaleAperta = false">
+        </modal-dialog>
+   </div>
+
+   <script src="https://unpkg.com/vue@3"></script>
+   <script src="./app.js"></script>
+</body>
+</html>
